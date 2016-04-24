@@ -8,6 +8,7 @@ import React, {
     View,
     Component
 } from 'react-native';
+import BookDetail from './BookDetail';
 
 var styles = StyleSheet.create({
     container: {
@@ -38,7 +39,8 @@ var styles = StyleSheet.create({
         backgroundColor: '#dddddd'
     },
     listView: {
-        backgroundColor: '#F5FCFF'
+        backgroundColor: '#F5FCFF',
+        marginTop: 50
     },
     loading: {
         flex: 1,
@@ -97,7 +99,7 @@ class BookList extends Component {
     }
     renderBook(book) {
         return (
-            <TouchableHighlight>
+            <TouchableHighlight onPress={() => this.showBookDetail(book)}  underlayColor='#dddddd'>
                 <View>
                     <View style={styles.container}>
                         <Image
@@ -112,6 +114,13 @@ class BookList extends Component {
                 </View>
             </TouchableHighlight>
         );
+    }
+    showBookDetail(book) {
+        this.props.navigator.push({
+            title: book.volumeInfo.title,
+            component: BookDetail,
+            passProps: {book}
+        });
     }
 }
 
