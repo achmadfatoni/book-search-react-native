@@ -32,7 +32,7 @@ class BookSearch extends Component {
                       selectedTab: 'featured',
                     });
                   }}>
-                    <Featured/>
+                  <Featured/>
                 </TabBarIOS.Item>
                 <TabBarIOS.Item
                     selected={this.state.selectedTab === 'search'}
